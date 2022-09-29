@@ -1,0 +1,26 @@
+.landing_header {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.snapchat {
+    background: linear-gradient(90deg, #8456EC 0%, #E87BF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.landing_text {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 18.4px;
+    text-align: center;
+    height: 36px;
+    max-width: 321px;
+    left: 0px;
+    top: 124px;
+    border-radius: nullpx;
+    margin: 0 auto;
+    margin-top: 16px;
+}
