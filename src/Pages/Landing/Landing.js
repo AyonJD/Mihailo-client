@@ -1,8 +1,9 @@
 import React from 'react';
-import popcornImage from '../../Assets/images/popcorn.png'
+import { useNavigate } from 'react-router-dom';
 import './Landing.css';
 
 const Landing = () => {
+    const navigate = useNavigate();
     return (
         <div className='mid-container'>
             <div className="landing_page">
@@ -17,7 +18,9 @@ const Landing = () => {
                     <p className='landing_text'>
                         Easily host and share events with your friends across any social media.
                     </p>
-                    <div className='create_event'>
+                    <div
+                        onClick={() => navigate('/create')}
+                        className='create_event'>
                         <button className='create_event_button'>🎉 Create my event</button>
                     </div>
                 </div>
