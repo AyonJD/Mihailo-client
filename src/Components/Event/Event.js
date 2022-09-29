@@ -4,9 +4,57 @@ import './Event.css'
 
 const Event = () => {
     const { register, formState: { errors }, handleSubmit, trigger, reset } = useForm();
-
+    const imageSotrageKey = `0ca5c9cdb23add3ecfaff014d8e4ad9c`
     const onSubmit = data => {
-        console.log(data);
+        const image = data.event_image[0];
+        const url = `https://api.imgbb.com/1/upload?key=${imageSotrageKey}`
+        const formData = new FormData();
+        formData.append('image', image);
+
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const img = result.data.url;
+                    const event = {
+                        event_name: data.event_name,
+                        host_name: data.host_name,
+                        starting_date: data.starting_date,
+                        starting_time: data.starting_time,
+                        ending_date: data.ending_date,
+                        ending_time: data.ending_time,
+                        city: data.city,
+                        area: data.area,
+                        state: data.state,
+                        post_code: data.post_code,
+                        img: img,
+                    }
+                    //send data to db
+                    fetch(`https://floating-ocean-13139.herokuapp.com/events`, {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify({ event })
+                    })
+                        .then(res => res.json())
+                        .then(inserted => {
+
+                            if (inserted.insertedId) {
+                                toast.success(`Event added successfully.`);
+
+                                reset()
+                            }
+                            else {
+                                toast.error('Failed to add Event')
+                            }
+                        }
+                        )
+                }
+            })
     }
 
     return (
@@ -221,12 +269,12 @@ const Event = () => {
                                         <div class="formbold-mb-5">
                                             <input
                                                 type="text"
-                                                name="post-code"
-                                                id="post-code"
+                                                name="post_code"
+                                                id="post_code"
                                                 placeholder="Post Code"
                                                 class="formbold-form-input handle_width"
 
-                                                {...register("post-code", {
+                                                {...register("post_code", {
                                                     required: true,
                                                     minLength: {
                                                         value: 4, message: 'Minimum 4 character required'
@@ -234,7 +282,7 @@ const Event = () => {
                                                 })}
 
                                                 onKeyUp={() => {
-                                                    trigger('post-code')
+                                                    trigger('post_code')
                                                 }}
                                             />
                                         </div>
