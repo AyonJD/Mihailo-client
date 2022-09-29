@@ -1,7 +1,14 @@
+.landing_header_section {
+    margin: 0 auto;
+    max-width: 283px;
+    height: 108px;
+}
+
 .landing_header {
     font-weight: 700;
     font-size: 36px;
     line-height: 36px;
+    color: #240D57;
     text-align: center;
 }
 
@@ -23,6 +30,7 @@
     border-radius: nullpx;
     margin: 0 auto;
     margin-top: 16px;
+    color: #4F4F4F;
 }
 
 .landing_event_image {
@@ -50,13 +58,11 @@
 }
 
 .create_event_button {
-    /* width: 145px; */
     height: 18px;
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 18px;
-    /* text-align: right; */
     background-color: transparent;
     border: none;
     outline: none;
@@ -64,3 +70,50 @@
 }
 
 /* Media query */
+@media only screen and(max-width: 768px) {
+    .landing_header_section {
+        max-width: 573.91px;
+        height: 192px
+    }
+
+    .landing_header {
+        font-weight: 700;
+        font-size: 64px;
+        line-height: 64px;
+    }
+
+    .landing_text {
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        height: 56px;
+        max-width: 521px;
+    }
+
+    .landing_event_image {
+        width: 311px;
+        height: 548.27px;
+        background: url(../../Assets/images/popcorn.png);
+        filter: drop-shadow(0px 0px 33.1283px rgba(0, 0, 0, 0.05));
+        border-radius: 24.8462px;
+    }
+
+    .create_event {
+        width: 320px;
+        height: 55px;
+    }
+
+    .create_event_button {
+        height: 23px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: #FFFFFF;
+    }
+
+}
